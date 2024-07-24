@@ -96,9 +96,12 @@ dependencies {
   implementation "curse.maven:jade-324717:${jade_file_id}"
 
   // Dynamic Asset Generator
-  implementation("dev.lukebemish:dynamicassetgenerator:${dag_version}") {
-    capabilities {
-      requireCapability('dev.lukebemish:dynamicassetgenerator-neoforge')
+  if (dynassetgen_enabled.toLowerCase() == "true")
+  {
+    implementation("dev.lukebemish:dynamicassetgenerator:${dynassetgen_version}") {
+      capabilities {
+        requireCapability('dev.lukebemish:dynamicassetgenerator-neoforge')
+      }
     }
   }
 }
