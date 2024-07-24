@@ -85,20 +85,31 @@ configurations {
 }
 
 dependencies {
+  System.out.println(String.format("jei_enabled == %s", jei_enabled));
+  System.out.println(String.format("jade_enabled == %s", jade_enabled));
+  System.out.println(String.format("dynassetgen_enabled == %s", dag_enabled));
+
   implementation "net.neoforged:neoforge:${neo_version}"
 
   // JEI
-  compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
-  compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-  runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+  if (jei_enabled == "true")
+  {
+    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+  }
 
   // Jade
-  implementation "curse.maven:jade-324717:${jade_file_id}"
+  if (jade_enabled == "true")
+  {
+    implementation "curse.maven:jade-324717:${jade_file_id}"
+  }
 
   // Dynamic Asset Generator
-  if (dynassetgen_enabled.toLowerCase() == "true")
+  if (dag_enabled == "true")
   {
-    implementation("dev.lukebemish:dynamicassetgenerator:${dynassetgen_version}") {
+    implementation("dev.lukebemish:dynamicassetgenerator:${dag_version}")
+    {
       capabilities {
         requireCapability('dev.lukebemish:dynamicassetgenerator-neoforge')
       }
