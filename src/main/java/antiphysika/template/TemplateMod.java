@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: LGPL-2.1
 //
 
-package io.github.antiphysika.mods.template;
+package antiphysika.template;
 
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -48,7 +48,7 @@ public class TemplateMod
   public static class ClientModEvents
   {
     @SubscribeEvent
-    public static void onClientSetup(FMLClientSetupEvent event)
+    public static void onClientSetup (FMLClientSetupEvent event)
     {
       LOGGER.info("{}: In onClientSetup()", MOD_ID);
     }
