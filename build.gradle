@@ -87,7 +87,7 @@ configurations {
 dependencies {
   System.out.println(String.format("jei_enabled == %s", jei_enabled));
   System.out.println(String.format("jade_enabled == %s", jade_enabled));
-  System.out.println(String.format("dynassetgen_enabled == %s", dag_enabled));
+  System.out.println(String.format("dag_enabled == %s", dag_enabled));
 
   implementation "net.neoforged:neoforge:${neo_version}"
 
